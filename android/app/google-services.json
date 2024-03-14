@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "855136747130",
+    "project_id": "ok-omardb",
+    "storage_bucket": "ok-omardb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855136747130:android:16bfbfed901365b98885c3",
+        "android_client_info": {
+          "package_name": "com.marouait.omar"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDqtGg8Q0atYgmB8evCFe9ID9h7O8Bmt0o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
