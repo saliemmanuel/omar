@@ -5,7 +5,6 @@ import 'package:omar/model/periode_semaine.dart';
 import 'package:omar/view/home/home_controller.dart';
 import '../../routes/routes.dart';
 import '../global/custom_search_bar.dart';
-import './liste_periode_controller.dart';
 
 class ListePeriodePage extends GetView<HomeController> {
   const ListePeriodePage({Key? key}) : super(key: key);
@@ -48,8 +47,6 @@ class ListePeriodePage extends GetView<HomeController> {
                                       const HeroIcon(HeroIcons.calendarDays),
                                   title: Text(periodeSemaine.labelSemaine),
                                   onTap: () {
-                                    print(periodeSemaine.id);
-                                    print(periodeSemaine.labelSemaine);
                                     Get.toNamed(NamePageRoute.detailPeriode,
                                         arguments: periodeSemaine);
                                   },
@@ -68,8 +65,6 @@ class ListePeriodePage extends GetView<HomeController> {
                                       const HeroIcon(HeroIcons.calendarDays),
                                   title: Text(periodeSemaine.labelSemaine),
                                   onTap: () {
-                                    print(periodeSemaine.id);
-                                    print(periodeSemaine.labelSemaine);
                                     Get.toNamed(NamePageRoute.detailPeriode,
                                         arguments: periodeSemaine);
                                   },

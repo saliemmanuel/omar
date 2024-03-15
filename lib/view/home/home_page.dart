@@ -8,8 +8,6 @@ class HomePage extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
-
-    
     return Obx(() => Scaffold(
           appBar: AppBar(
             centerTitle: true,

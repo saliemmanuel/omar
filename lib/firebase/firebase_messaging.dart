@@ -1,21 +1,18 @@
-import 'dart:convert';
 import 'dart:math';
 
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:omar/config/palette.dart';
 
-import '../model/user.dart';
 
 /// J'ecoute les notifications entrant dans l'application
 /// même quand l'application est en arrêt
 /// avec cette méthode
 Future<void> backgroundMessagingHandler(RemoteMessage message) async {
-  print("message.data");
-  print(message.data);
+  // print("message.data");
+  // print(message.data);
   AwesomeNotifications().createNotificationFromJsonData(message.data);
 }
 
@@ -147,8 +144,8 @@ class NotificationController {
   @pragma("vm:entry-point")
   static Future<void> onActionReceivedMethod(
       ReceivedAction receivedAction) async {
-    late var user = Users();
-    var box = GetStorage();
+    // late var user = Users();
+    // var box = GetStorage();
     // user = Users.fromJson(jsonDecode(box.read("user")));
     // if (user.email!.isNotEmpty) {
     //   Get.offAll(() => const Home());

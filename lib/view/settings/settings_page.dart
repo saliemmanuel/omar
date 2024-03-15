@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:omar/view/global/avatar_widget.dart';
+import 'package:omar/view/settings/more_notification_settings/more_notification_settings_controller.dart';
 import '../../config/palette.dart';
 import '../../routes/routes.dart';
 import '../global/dialogue.dart';
@@ -14,6 +15,7 @@ class SettingsPage extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     Get.lazyPut(() => SettingsController());
+    final moreNotifSetting = Get.put(MoreNotificationSettingsController());
     final scaffoldStateKey = GlobalKey<ScaffoldState>();
     return Scaffold(
         key: scaffoldStateKey,
@@ -108,12 +110,16 @@ class SettingsPage extends GetView<SettingsController> {
                                             controller.changeValueNotification(
                                                 controller
                                                     .activeNotification.value);
+                                            moreNotifSetting
+                                                .saveNotificationSettings();
                                           },
                                         ),
                                         onTap: () {
                                           controller.changeValueNotification(
                                               controller
                                                   .activeNotification.value);
+                                          moreNotifSetting
+                                              .saveNotificationSettings();
                                         },
                                       ),
                                       const Divider(),
@@ -131,12 +137,25 @@ class SettingsPage extends GetView<SettingsController> {
                                                     controller
                                                         .activeSMSNotification
                                                         .value);
+                                            moreNotifSetting
+                                                .saveNotificationSettings();
                                           },
                                         ),
                                         onTap: () {
                                           controller.changeValueNotificationSMS(
                                               controller
                                                   .activeSMSNotification.value);
+                                          moreNotifSetting
+                                              .saveNotificationSettings();
+                                        },
+                                      ),
+                                      const Divider(),
+                                      ListTile(
+                                        leading: const HeroIcon(HeroIcons.cog),
+                                        title: const Text("Plus de paramètres"),
+                                        onTap: () {
+                                          Get.toNamed(NamePageRoute
+                                              .moreNotificationSettings);
                                         },
                                       ),
                                     ],

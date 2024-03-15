@@ -1,6 +1,10 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:omar/model/user.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../firebase/firebase_storage.dart';
@@ -32,7 +36,7 @@ class HomeController extends GetxController {
 
   RxString search = "".obs;
   List<DonneeMatiere> selectedDay = [];
-  RxString selectedCampus = "".obs;
+  RxString selectedCampus = "#".obs;
   RxString selectedLabelSemaine = "".obs;
   DateTime? selectedDebutSemaine;
   DateTime? selectedFinSemaine;
@@ -41,24 +45,32 @@ class HomeController extends GetxController {
     for (var semaine in data.semaine!) {
       if (indexToCheck.compareTo(semaine.index!) == 0) {
         selectedDay.addAll(semaine.data!);
-        selectedCampus.value = semaine.campus ?? "#";
+        selectedCampus.value = semaine.campus == "" ? "#" : semaine.campus!;
       }
     }
   }
 
   PeriodeSemaine semaineData = PeriodeSemaine.nullValue();
   void getLastSemaine() async {
-    PeriodeSemaine periode = await storage.getLastSemaineInlisteSemaine();
-    if (periode.data.semaine!.isNotEmpty) {
-      semaineData = periode;
-      selectedCampus.value = "";
-      selectedLabelSemaine.value = "";
-      selectedLabelSemaine.value = semaineData.labelSemaine;
-      selectedDebutSemaine =
-          DateTime.parse(semaineData.debutSemaine.toString());
-      selectedFinSemaine = DateTime.parse(semaineData.finSemaine.toString());
-      checkSemaineKey(semaineData.data,
-          "${focusDate!.day}-${focusDate!.month}-${focusDate!.year}");
+    Users user = Users.fromMap(jsonDecode(box.read('user')));
+    print(user);
+    dynamic periode = await storage.getLastSemaineInlisteSemaine(
+        cycleNiveau: user.cycleNiveau!,
+        departement: user.departement!,
+        parcours: user.parcours!);
+    print(periode);
+    if (periode != null) {
+      if (periode.data.semaine!.isNotEmpty) {
+        semaineData = periode;
+        selectedCampus.value = "";
+        selectedLabelSemaine.value = "";
+        selectedLabelSemaine.value = semaineData.labelSemaine;
+        selectedDebutSemaine =
+            DateTime.parse(semaineData.debutSemaine.toString());
+        selectedFinSemaine = DateTime.parse(semaineData.finSemaine.toString());
+        checkSemaineKey(semaineData.data,
+            "${focusDate!.day}-${focusDate!.month}-${focusDate!.year}");
+      }
     }
   }
 

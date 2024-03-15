@@ -28,8 +28,6 @@ class SplashController extends GetxController {
 
   // initialiation de la page suivante
   initNextPage() async {
-    print("kdlskdslkdsldkdslk");
-    print(firebase.curentUser);
     // Initialisation le temps d'attente à 2s
     Timer(
       const Duration(seconds: 1),

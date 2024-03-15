@@ -43,7 +43,7 @@ class SectionInfoPersonnel extends GetView<SignupController> {
                     style: TextStyle(
                         color: controller.selectedDate.value ==
                                 controller.initialSelectedDate
-                            ? const Color.fromARGB(255, 133, 141, 156)
+                            ? const Color.fromARGB(255, 46, 46, 46)
                             : Get.isDarkMode
                                 ? Colors.white
                                 : Colors.black),

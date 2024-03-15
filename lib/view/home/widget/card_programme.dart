@@ -43,23 +43,23 @@ class CardProgramme extends StatelessWidget {
         child: Row(
           children: [
             Padding(
-              padding: EdgeInsets.only(top: 12, bottom: 12),
+              padding: const EdgeInsets.only(top: 12, bottom: 12),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.arrow_forward_ios_rounded,
+                      const Icon(Icons.arrow_forward_ios_rounded,
                           size: 12, color: Colors.white),
                       Text(
                         ' $heurDebut',
-                        style: TextStyle(color: Colors.white),
+                        style: const TextStyle(color: Colors.white),
                       ),
                     ],
                   ),
                   Text(
                     ' $heurFin',
-                    style: TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ],
               ),
@@ -72,7 +72,8 @@ class CardProgramme extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.only(top: 8, bottom: 8, right: 5, left: 12),
+                padding: const EdgeInsets.only(
+                    top: 8, bottom: 8, right: 5, left: 12),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,12 +84,12 @@ class CardProgramme extends StatelessWidget {
                         Expanded(
                           child: Text(
                             "$codeUnite $nomUnite",
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white),
                           ),
                         ),
-                        Text(
+                        const Text(
                           'Now',
                           style: TextStyle(color: Colors.white),
                         ),
@@ -96,7 +97,7 @@ class CardProgramme extends StatelessWidget {
                     ),
                     Text(
                       nomSalle,
-                      style: TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),

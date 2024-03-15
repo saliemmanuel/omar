@@ -23,8 +23,8 @@ class _HomeState extends State<Home> {
     return Obx(
       () => ListView(
         children: [
-         if(controller.selectedDebutSemaine != null)
-          EasyInfiniteDateTimeLine(
+          if (controller.selectedDebutSemaine != null)
+            EasyInfiniteDateTimeLine(
               headerBuilder: (context, date) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 20.0),
@@ -86,10 +86,23 @@ class _HomeState extends State<Home> {
                 setState(() {});
               },
             ),
-
           const SizedBox(height: 20),
-          Text(controller.selectedCampus.value),
-          const Divider(),
+          Text(controller.selectedCampus.value,
+              style: const TextStyle(fontSize: 0)),
+          if (controller.selectedDebutSemaine != null)
+            Column(
+              children: [
+                if (controller.selectedCampus.value == "#") ...[
+                  Text("Il y'a pas cours aujourd'hui ✌️",
+                      style: Get.textTheme.bodyLarge),
+                  const Divider(),
+                ] else ...[
+                  Text(controller.selectedCampus.value,
+                      style: Get.textTheme.bodyLarge),
+                  const Divider(),
+                ]
+              ],
+            ),
           ...controller.selectedDay
               .map((element) => CardProgramme(
                   codeUnite: element.codeUnite!,

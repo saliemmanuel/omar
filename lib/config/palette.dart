@@ -16,7 +16,7 @@ class Palette {
 
   static Color textButtonLabelColors = const Color.fromARGB(255, 119, 117, 117);
   static Color textFooterColors = const Color.fromARGB(255, 251, 247, 247);
-  static LinearGradient gradientLogin = LinearGradient(
+  static LinearGradient gradientLogin = const LinearGradient(
     end: Alignment.bottomCenter,
     begin: Alignment.topCenter,
     colors: [

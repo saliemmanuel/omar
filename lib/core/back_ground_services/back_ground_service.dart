@@ -7,7 +7,7 @@ class BackgroundService extends GetxService {
 
   void fetchDataInBackground() {
     // Exemple de tâche en arrière-plan
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    Timer.periodic(const Duration(seconds: 1), (timer) {
       backgroundData.value = 'Données mises à jour en arrière-plan $timer';
     });
   }

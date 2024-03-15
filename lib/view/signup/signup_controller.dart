@@ -6,7 +6,6 @@ import 'package:omar/firebase/firebase_storage.dart';
 import 'package:omar/model/user.dart';
 import 'package:omar/routes/routes.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
-import 'package:uuid/uuid.dart';
 
 import '../global/dialogue.dart';
 
@@ -92,6 +91,7 @@ class SignupController extends GetxController {
             dateNaissance: selectedDate.value,
             matricule: matricule.text,
             lieuNaissance: lieunaiss.text,
+            avatar: '',
             messagingToken: "vide");
         storage.saveUserDatas(user: user).then((value) => simpleDialog(
             context: context,

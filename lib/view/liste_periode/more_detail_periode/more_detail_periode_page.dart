@@ -2,7 +2,6 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:heroicons/heroicons.dart';
 import '../../home/widget/card_programme.dart';
 import './more_detail_periode_controller.dart';
 
@@ -29,20 +28,18 @@ class _MoreDetailPeriodePageState extends State<MoreDetailPeriodePage> {
         child: Obx(
           () => ListView(
             children: [
+              Text(
+                controller.selectedCampus.value,
+                style: const TextStyle(fontSize: 0.0),
+              ),
               if (controller.selectedDebutSemaine != null)
                 EasyInfiniteDateTimeLine(
                   headerBuilder: (context, date) {
                     return Padding(
                       padding: const EdgeInsets.only(bottom: 20.0),
-                      child: ListTile(
-                        leading: const HeroIcon(HeroIcons.calendarDays),
-                        title: AutoSizeText(
-                          controller.selectedLabelSemaine.value,
-                          style: const TextStyle(fontSize: 20),
-                        ),
-                        onTap: () {
-                          // Get.toNamed(NamePageRoute.periode);
-                        },
+                      child: AutoSizeText(
+                        controller.selectedLabelSemaine.value,
+                        style: const TextStyle(fontSize: 20),
                       ),
                     );
                   },
@@ -83,13 +80,13 @@ class _MoreDetailPeriodePageState extends State<MoreDetailPeriodePage> {
                       controller.selectedDebutSemaine!.year,
                       controller.selectedDebutSemaine!.month,
                       controller.selectedDebutSemaine!.day),
-                  focusDate: controller.focusDate,
+                  focusDate: focusDate,
                   lastDate: DateTime(
                       controller.selectedFinSemaine!.year,
                       controller.selectedFinSemaine!.month,
                       controller.selectedFinSemaine!.day),
                   onDateChange: (selectedDate) {
-                    controller.focusDate = selectedDate;
+                    focusDate = selectedDate;
                     controller.clearForRamplacement();
                     controller.checkSemaineKey(controller.semaineData.data,
                         "${focusDate!.day}-${focusDate!.month}-${focusDate!.year}");
@@ -97,8 +94,22 @@ class _MoreDetailPeriodePageState extends State<MoreDetailPeriodePage> {
                   },
                 ),
               const SizedBox(height: 20),
-              Text(controller.selectedCampus.value),
-              const Divider(),
+              if (controller.selectedDebutSemaine != null)
+                Column(
+                  children: [
+                    if (controller.selectedCampus.value == "#") ...[
+                      Text("Il y'a pas cours aujourd'hui ✌️",
+                          style: Get.textTheme.bodyLarge),
+                      const Divider(),
+                    ] else ...[
+                      Text(controller.selectedCampus.value,
+                          style: Get.textTheme.bodyLarge),
+                      const Divider(),
+                    ]
+                  ],
+                ),
+              if (controller.selectedDebutSemaine == null)
+                const Center(child: CircularProgressIndicator()),
               ...controller.selectedDay
                   .map((element) => CardProgramme(
                       codeUnite: element.codeUnite!,

@@ -19,11 +19,6 @@ class LoginController extends GetxController {
   var storage = FirebaseStorage();
   final box = GetStorage();
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
-
   void connexion({BuildContext? context}) async {
     try {
       simpleDialogueCardSansTitle("Connexion...", context!);

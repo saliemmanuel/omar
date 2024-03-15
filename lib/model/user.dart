@@ -9,10 +9,17 @@ class Users {
   final String? telephone;
   final String? departement;
   final String? parcours;
+  final String? filiere;
   final String? cycleNiveau;
   final String? matricule;
   final String? email;
+  final String? avatar;
   String? messagingToken;
+
+  set messagingsToken(String? token) {
+    messagingToken = token;
+  }
+
   Users({
     this.id,
     this.nomPrenom,
@@ -21,15 +28,13 @@ class Users {
     this.telephone,
     this.departement,
     this.parcours,
+    this.filiere,
     this.cycleNiveau,
     this.matricule,
     this.email,
+    this.avatar,
     this.messagingToken,
   });
-
-  set messagingsToken(String? token) {
-    messagingToken = token;
-  }
 
   Users copyWith({
     String? id,
@@ -39,9 +44,11 @@ class Users {
     String? telephone,
     String? departement,
     String? parcours,
+    String? filiere,
     String? cycleNiveau,
     String? matricule,
     String? email,
+    String? avatar,
     String? messagingToken,
   }) {
     return Users(
@@ -52,9 +59,11 @@ class Users {
       telephone: telephone ?? this.telephone,
       departement: departement ?? this.departement,
       parcours: parcours ?? this.parcours,
+      filiere: filiere ?? this.filiere,
       cycleNiveau: cycleNiveau ?? this.cycleNiveau,
       matricule: matricule ?? this.matricule,
       email: email ?? this.email,
+      avatar: avatar ?? this.avatar,
       messagingToken: messagingToken ?? this.messagingToken,
     );
   }
@@ -68,9 +77,11 @@ class Users {
       'telephone': telephone,
       'departement': departement,
       'parcours': parcours,
+      'filiere': filiere,
       'cycleNiveau': cycleNiveau,
       'matricule': matricule,
       'email': email,
+      'avatar': avatar,
       'messagingToken': messagingToken,
     };
   }
@@ -87,10 +98,12 @@ class Users {
       departement:
           map['departement'] != null ? map['departement'] as String : null,
       parcours: map['parcours'] != null ? map['parcours'] as String : null,
+      filiere: map['filiere'] != null ? map['filiere'] as String : null,
       cycleNiveau:
           map['cycleNiveau'] != null ? map['cycleNiveau'] as String : null,
       matricule: map['matricule'] != null ? map['matricule'] as String : null,
       email: map['email'] != null ? map['email'] as String : null,
+      avatar: map['avatar'] != null ? map['avatar'] as String : null,
       messagingToken: map['messagingToken'] != null
           ? map['messagingToken'] as String
           : null,
@@ -104,7 +117,7 @@ class Users {
 
   @override
   String toString() {
-    return 'Users(id: $id, nomPrenom: $nomPrenom, dateNaissance: $dateNaissance, lieuNaissance: $lieuNaissance, telephone: $telephone, departement: $departement, parcours: $parcours, cycleNiveau: $cycleNiveau, matricule: $matricule, email: $email, messagingToken: $messagingToken)';
+    return 'Users(id: $id, nomPrenom: $nomPrenom, dateNaissance: $dateNaissance, lieuNaissance: $lieuNaissance, telephone: $telephone, departement: $departement, parcours: $parcours, filiere: $filiere, cycleNiveau: $cycleNiveau, matricule: $matricule, email: $email, avatar: $avatar, messagingToken: $messagingToken)';
   }
 
   @override
@@ -118,9 +131,11 @@ class Users {
         other.telephone == telephone &&
         other.departement == departement &&
         other.parcours == parcours &&
+        other.filiere == filiere &&
         other.cycleNiveau == cycleNiveau &&
         other.matricule == matricule &&
         other.email == email &&
+        other.avatar == avatar &&
         other.messagingToken == messagingToken;
   }
 
@@ -133,9 +148,11 @@ class Users {
         telephone.hashCode ^
         departement.hashCode ^
         parcours.hashCode ^
+        filiere.hashCode ^
         cycleNiveau.hashCode ^
         matricule.hashCode ^
         email.hashCode ^
+        avatar.hashCode ^
         messagingToken.hashCode;
   }
 }

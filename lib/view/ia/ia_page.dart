@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 import 'package:heroicons/heroicons.dart';
 import 'package:omar/view/ia/widget/proposition_ai_bubble.dart';
 import './ia_controller.dart';
-import 'dart:math' as math;
 
-class IaPage extends GetView<IaController> {
+class IaPage extends StatelessWidget {
   const IaPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var controller = Get.put(IaController());
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(0.0),
@@ -75,7 +75,9 @@ class IaPage extends GetView<IaController> {
                 )),
                 IconButton(
                   icon: const HeroIcon(HeroIcons.paperAirplane),
-                  onPressed: () async {},
+                  onPressed: () async {
+                    controller.okGoogle();
+                  },
                 )
               ],
             ),

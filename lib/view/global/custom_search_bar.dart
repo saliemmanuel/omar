@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final void Function(String)? onChanged;
@@ -8,10 +9,11 @@ class CustomSearchBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 45.0,
+      padding: const EdgeInsets.only(top: 5),
+      height: 50.0,
       margin: const EdgeInsets.only(left: 8, right: 8, top: 8, bottom: 8),
       decoration: BoxDecoration(
-          color: const Color(0xFFD9D9D9),
+          color: Get.isDarkMode ? Colors.grey[800] : Colors.grey[200],
           borderRadius: BorderRadius.circular(12.0)),
       child: Row(
         children: [

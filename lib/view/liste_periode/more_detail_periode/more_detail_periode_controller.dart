@@ -1,3 +1,4 @@
+
 import 'package:get/get.dart';
 
 import '../../../firebase/firebase_storage.dart';
@@ -22,7 +23,6 @@ class MoreDetailPeriodeController extends GetxController {
   void onInit() {
     PeriodeSemaine periodeSemaine = Get.arguments;
     getSemaineById(id: periodeSemaine.id);
-    print(periodeSemaine);
     super.onInit();
   }
 

@@ -114,7 +114,7 @@ class AvatarWidgetState extends State<AvatarWidget> {
       return;
     } else {
       if (mounted) {
-        print("Upload");
+        // print("Upload");
         // locator.get<UpdateUserProfilService>().uploadImage(
         //   result,
         //   user.id.toString(),

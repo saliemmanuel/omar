@@ -1,6 +1,5 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:omar/config/palette.dart';
 import 'package:omar/routes/routes.dart';
 import 'package:shadcn_ui/shadcn_ui.dart';
 import './login_controller.dart';
